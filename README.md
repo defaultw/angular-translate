@@ -1,1 +1,1 @@
-# angular-mgd7fr
+# angular-translate
