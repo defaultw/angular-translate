@@ -1,5 +1,6 @@
 <h1>{{'i18ntest' | translate}}</h1>
 <div style="margin: 10px 0 10px 0;">
+  {{textValue}}:
   <select [(ngModel)]="lang" (ngModelChange)="changeLang(lang)">
     <option value="en">English</option>
     <option value="zh">简体中文</option>
@@ -8,9 +9,6 @@
 <p>{{'hello' | translate}}</p>
 
 <div style="margin-left: 80px;">
-<p>{{"author" | translate:param}}</p>
+  <!-- param为appComponent中定义的变量 -->
+  <p>{{"author" | translate:param}}</p>
 </div>
-
-<!-- <div *ngFor="let v of textValue">
-  {{v}}
-</div> -->

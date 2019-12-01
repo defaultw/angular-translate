@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
@@ -8,42 +8,37 @@ import { Observable, of } from 'rxjs';
   styleUrls: [ './app.component.css' ]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentChecked {
 
   public lang: string = 'zh';
 
-  public param = {value: 'Default.W'};
+  public param; 
 
   public textValue :string[];
 
   constructor(public translateService: TranslateService) {
     this.translateService.setDefaultLang('zh');
+    this.translateService.use('zh');
   }
   
   changeLang(lang: string): void {
     console.log(lang);
     this.translateService.use(lang);
   }
-
-  // 异步获取翻译结果
-  getTranslateValue(value: string, values?: string[]){
-    this.translateService.get(value?value:values).subscribe((res: string) => {
-      console.log(res);
-    });
-  }
-
-  // 同步获取翻译结果
-  instantTranslateValue(value : string) : string{
-    return this.translateService.instant(value) as string;
-  }
-
+  
   ngOnInit() {
-    // 调用服务获取翻译结果 打印
-    this.getTranslateValue('hello');
+    this.param = {value: 'Default.W'};
+  }
 
-    this.translateService.get(['i','love','angular frame']).subscribe((res) => {
-      this.textValue = res;
-      console.log(res);
+  // ngAfterContentChecked生命周期钩子每当Angular完成被投影组件内容的变更检测之后调用
+  ngAfterContentChecked() {
+    // 从ts中返回翻译结果
+    // 这里调用了translate异步获取翻译结果的get()方法
+    this.translateService.get('language').subscribe({
+      next: res => {
+        this.textValue = res;
+      }
     });
   }
+  
 }
