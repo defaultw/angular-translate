@@ -44,7 +44,7 @@ npm install @ngx-translate/core --save
 npm install @ngx-translate/http-loader --save
 ```
 
-如需要制定特定的版本可以参考如下命令：
+如需要指定特定的版本可以参考如下命令：
 
 ```shell
 npm install @ngx-translate/core@11.x --save
@@ -214,7 +214,14 @@ export class TranslateHttpLoader implements TranslateLoader {
 
 ### 3. 完整代码
 
-完整代码请查看[github](https://github.com/defaultw/angular-translate)
+完整代码请查看[github](https://github.com/defaultw/angular-translate)。
+
+
+## 五、参考文献
+
+[1] [ngx-translate官方Github](https://github.com/ngx-translate/core)
+
+
 
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-mgd7fr)
