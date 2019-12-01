@@ -36,9 +36,9 @@ export class AppComponent implements OnInit, AfterContentChecked {
     // 这里调用了translate异步获取翻译结果的get()方法
     this.translateService.get('language').subscribe({
       next: res => {
-        this.textValue = res;
+        this.textValue = res; 
       }
     });
   }
-  
+
 }
